@@ -1,16 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <html>
 
-<!-- include A-Frame obviously -->
-<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
-<!-- include ar.js for A-Frame -->
-<script src="https://jeromeetienne.github.io/AR.js/aframe/build/aframe-ar.js"></script>
-<body style='margin : 0px; overflow: hidden;'>
-  <a-scene embedded arjs>
-    <!-- create your content here. just a box for now -->
-	<a-image src="Burn-Hazard.png"></a-image>
-    <!-- define a camera which will move according to the marker position -->
-    <a-marker-camera preset='hiro'></a-marker-camera>
-  </a-scene>
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Import A-Frame JS-->
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <!-- Import AR JS -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Import CSS -->
+  <link rel="stylesheet" href="StyleApp.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 
+</head>
+
+<body>
+  <!-- <body style="margin : 0px; overflow: hidden;"> -->
+  <div class="HeaderLogo">
+    <div class="container py-3 px-5 text-center">
+      <nav>
+        <div class="logo"> Safety Awareness Tool </div>
+        <div class="logosub"> RedCode Hackathon 2021 - ConocoPhillips Challenge </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="page_grid pt-4" id="IndexGroup">
+    <div class="container">
+      <div id="IndexGrid">
+        <div class="row" id="row1">
+
+          <!-- Hazard Icons -->
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <a class="project_a" href="#detail_hazard" data-bs-toggle="collapse" aria-expanded="true">
+                <img class="card-img-top" src="HazardIcon.jpg" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text text-center">Hazard Types</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- detail collpase -->
+          <div class="col order-md-last collapse fade mb-4 mt-1" id="detail_hazard" data-bs-parent="#IndexGrid">
+            <div class="ProjectInfo px-1 shadow-md">
+              <p class="container">
+                <img id="AllHazard" src="AllHazard.png">                
+              </p>
+
+            </div>
+          </div>
+
+          <!-- AR Icons -->
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <a class="project_a" href="#detail_AR" data-bs-toggle="collapse" aria-expanded="true">
+                <img class="card-img-top" src="ARIcon.png" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text text-center">AR</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- detail collpase -->
+          <div class="col order-md-last collapse fade mb-4 mt-1" id="detail_AR" data-bs-parent="#IndexGrid">
+            <div class="ProjectInfo px-2 shadow-md">
+              <iframe src="AR_Code.html" width="1000px" height="600px"></iframe> 
+            </div>
+          </div>
+
+          <!-- First Aid Icons -->
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <a class="project_a" href="#detail_firstaid" data-bs-toggle="collapse" aria-expanded="true">
+                <img class="card-img-top" src="FirstAid.jpg" data-holder-rendered="true">
+                <div class="card-body">
+                  <p class="card-text text-center">First Aid Info</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- detail collpase -->
+          <div class="col order-md-last collapse fade mb-4 mt-1" id="detail_firstaid" data-bs-parent="#IndexGrid">
+            <div class="ProjectInfo px-2 shadow-md">
+              <p class="container text-center">
+                <img src="FirstAidInfo.png">     
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- <div class = "container xl">
+    <a-scene embedded arjs>
+      <a-marker preset='hiro'>
+        <a-entity
+          position="0 0 0"
+          scale="0.5 0.5 0.5"> -->
+  <!-- gltf-model = "Blue-cube.gltf" -->
+  <!-- </a-entity>
+      <a-image src="Burn-Hazard.png"></a-image>
+
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </div>  -->
 </body>
+
+<footer>
+  <p class="text-muted pt-4 text-center"> 2021 - Team Small Baguettes: Javier Perez and Vinh Hoang</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+  integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+  integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+  import { getStorage, ref } from "firebase/storage";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCTm1zh_IyOetzQ2uZvi1ZV5X4fXZxIdT8",
+    authDomain: "uh-hackathon.firebaseapp.com",
+    projectId: "uh-hackathon",
+    storageBucket: "uh-hackathon.appspot.com",
+    messagingSenderId: "897459402742",
+    appId: "1:897459402742:web:77056822e967b18bc539d7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
+
+
 </html>
