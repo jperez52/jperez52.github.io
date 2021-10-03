@@ -17,7 +17,8 @@
           position="0 0 0"
           scale="2 2 2">
           <!-- gltf-model = "Blue-cube.gltf" -->
-		  <a-image src="./AR_Cards/Burn-Hazard.png"></a-image>
+		  <!--a-image src="./AR_Cards/Burn-Hazard.png"></a-image-->
+		  <a-image id="Img0"></a-image>
         </a-entity>
       </a-marker>
 
@@ -61,5 +62,31 @@
       <a-entity camera></a-entity>
     </a-scene>
 </body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+  import { getStorage, ref } from "firebase/storage";
 
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCTm1zh_IyOetzQ2uZvi1ZV5X4fXZxIdT8",
+    authDomain: "uh-hackathon.firebaseapp.com",
+    projectId: "uh-hackathon",
+    storageBucket: "uh-hackathon.appspot.com",
+    messagingSenderId: "897459402742",
+    appId: "1:897459402742:web:77056822e967b18bc539d7"
+  };
+
+  // Initialize Firebase
+  const firebaseApp = initializeApp(firebaseConfig);
+  const storage = getStorage(firebaseApp);
+
+  const ImgRef = ref(storage, 'AR_Cards/0_AR_Card.png');
+
+  // Set src
+  document.querySelector('#Img0').setAttribute('src', ImgRef)
+  </script>
 </html>
